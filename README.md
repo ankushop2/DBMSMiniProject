@@ -10,3 +10,5 @@ V2 - Added Create Account Page . Added Simple HomePage with Sign-In & Create Acc
 V3 - Did Backend for Login And Register. And integrated pages.
 
 v4 - Added HTML files for BUS and HOTEL Booking. Backend to be written yet.
+
+v5 - Refurnished User Login and Registration Pages . Html & php now combined . Exception handling and error detection added . 
