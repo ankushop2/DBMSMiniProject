@@ -16,3 +16,5 @@ v5 - Refurnished User Login and Registration Pages . Html & php now combined . E
 v6 - Enhanced UI by master ABZ and boundary conditions added
 
 v7 - Sessions added
+
+v8 - UI Added for Home page after loggin in . More webpages added -> Services , About , Logout , Bus_booking , Hotel_Booking. 
