@@ -51,7 +51,7 @@
       $maxID = $row["max(u_id)"];
       $newID = $maxID + 1;
 
-      $sql = "INSERT INTO registered (username, phNo, address,cc,dob,password,u_id) VALUES ('$ID','$phone','$address','$credit','$date','$pass','$newID')";
+      $sql = "INSERT INTO registered (u_id,username, phNo, address,cc,dob,password) VALUES ('$newID','$ID','$phone','$address','$credit','$date','$pass')";
       $sql2 = "INSERT INTO login (username,password) VALUES ('$ID','$pass')";
       if (($conn->query($sql))&&($conn->query($sql2)) === TRUE) {
           $result='<div class="alert alert-success"><strong>Registration Successful !</strong> </div>';

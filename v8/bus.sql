@@ -71,7 +71,7 @@ INSERT INTO `registered` (`u_id`,`username`, `phNo`, `address`, `cc`, `dob`, `pa
 -- Indexes for table `login`
 --
 ALTER TABLE `login`
-  ADD PRIMARY KEY (`username`,'password');
+  ADD PRIMARY KEY (`username`,`password`);
 
 --
 -- Indexes for table `registered`
