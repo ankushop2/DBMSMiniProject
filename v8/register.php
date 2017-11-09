@@ -45,8 +45,13 @@
       echo $dob." ";
       echo $credit;
       */
+      $query  = 'SELECT max(u_id) FROM `registered`';
+      $result = $conn->query($query);
+      $row = mysqli_fetch_array($result);
+      $maxID = $row["max(u_id)"];
+      $newID = $maxID + 1;
 
-      $sql = "INSERT INTO registered (username, phNo, address,cc,dob,password) VALUES ('$ID','$phone','$address','$credit','$date','$pass')";
+      $sql = "INSERT INTO registered (username, phNo, address,cc,dob,password,u_id) VALUES ('$ID','$phone','$address','$credit','$date','$pass','$newID')";
       $sql2 = "INSERT INTO login (username,password) VALUES ('$ID','$pass')";
       if (($conn->query($sql))&&($conn->query($sql2)) === TRUE) {
           $result='<div class="alert alert-success"><strong>Registration Successful !</strong> </div>';
@@ -151,6 +156,5 @@ $( function() {
 </script>
 <!-- Latest compiled and minified JavaScript -->
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-</script>
 </body>
 </html>

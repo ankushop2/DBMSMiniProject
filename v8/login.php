@@ -23,7 +23,7 @@ if ($_POST["submit"]) {
                $result = $conn->query($query);
                $rows = mysqli_num_rows($result);
                if ($rows == 1) {
-                 session_start();
+                  session_start();
                   $_SESSION['login_user']=$ID; // Initializing Session
                   $result='<div class="alert alert-success"><strong>Login Successful!</strong> </div>';
                   header("location: booking.php"); // Redirecting To Other Page
