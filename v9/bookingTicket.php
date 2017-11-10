@@ -21,7 +21,7 @@
       $result='<div class="alert alert-danger"><strong>There were error(s)in your form:</strong>'.$error.'</div>';
     }
     else {
-       header("location: bookingTicket.php");
+       header("location: booking.php");
     }
   }
 ?>
@@ -42,6 +42,30 @@ bootstrap-theme.min.css">
 <link rel="stylesheet" href="/resources/demos/style.css">
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<script>
+$(document)
+    .ready(function () {
+    $('.form-1')
+        .jqTransform();
+    $('.slider')
+        ._TMS({
+        show: 0,
+        pauseOnHover: true,
+        prevBu: '.prev',
+        nextBu: '.next',
+        playBu: false,
+        duration: 1000,
+        preset: 'fade',
+        pagination: true,
+        pagNums: false,
+        slideshow: 7000,
+        numStatus: false,
+        banners: false,
+        waitBannerAnimation: false,
+        progressBar: false
+    })
+});
 </script>
 <style>
 html , body {
@@ -85,7 +109,7 @@ padding-bottom:15px;
 <div class="container morepadd">
   <div class="row">
     <div class="col-md-6 col-md-offset-3 loginForm">
-      <h2 class="centero">FIND THE RIGHT BUS HERE</h2>
+      <h2 class="centero">BOOK YOUR TICKETS HERE</h2>
       <?php echo $result; ?>
       <form method="post">
 
@@ -140,7 +164,7 @@ padding-bottom:15px;
         </div>
 
         <input type="submit" name="goback" class="btn btn-danger " value="Go Back"/>
-        <input type="submit" name="submit" class="btn btn-success btn-lg leftmargin" value="Search"/>
+        <input type="submit" name="submit" class="btn btn-success btn-lg leftmargin" value="Submit"/>
       </form>
     </div>
   </div>
