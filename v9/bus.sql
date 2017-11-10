@@ -38,8 +38,7 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`username`, `password`) VALUES
-('abz', 'SampleCrap123'),
-('ankush', 'yomama');
+('abz', 'root123');
 
 -- --------------------------------------------------------
 
@@ -89,7 +88,9 @@ CREATE TABLE `routes` (
 
 INSERT INTO `routes` (`rid`, `bid`, `fromCity`, `toCity`, `cost`, `dep_date`, `dep_time`, `arr_date`, `arr_time`, `availseats`) VALUES
 (1, 1, 'Bangalore', 'Chennai', 500, '2017-11-30', '22:00:00', '2017-12-01', '06:00:00', 40),
-(2, 1, 'Bangalore', 'Chennai', 350, '2017-11-30', '05:30:00', '2017-11-30', '12:00:00', 40);
+(2, 1, 'Bangalore', 'Chennai', 500, '2017-11-30', '05:30:00', '2017-11-30', '12:00:00', 40),
+(3, 2, 'Delhi', 'Kolkata', 400, '2017-10-28', '18:00:00', '2017-10-29', '06:00:00', 60),
+(4, 2, 'Kolkata', 'Delhi', 350, '2017-10-30', '20:00:00', '2017-10-31', '08:00:00', 60);
 
 --
 -- Indexes for dumped tables

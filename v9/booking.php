@@ -71,7 +71,7 @@ $(document)
       <nav>
         <ul class="menu">
           <li class="current"><a href="booking.php">Home</a></li>
-          <li><a href="bus_booking.php">Book Bus</a></li>
+          <li><a href="busbooking.php">Book Bus</a></li>
           <li><a href="hotel_booking.html">Book Hotel</a></li>
           <li><a href="contacts.php">Contact</a></li>
           <li><a href="services.php">Services</a></li>
