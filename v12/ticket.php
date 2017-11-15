@@ -2,9 +2,9 @@
   if ($_POST["confirm"]) {
     header("location: confirm.php");
   }
-  else if ($_POST["goback"]) { 
+  else if ($_POST["goback"]) {
    header("location: booking.php");
-  } 
+  }
 
 ?>
 <!doctype html>
@@ -73,7 +73,7 @@ padding-bottom:20px;
       <li class="list-group-item list-group-item-info"><strong>Departure Date : </strong><?php ini_set('display_errors', 1);
               $servername = "localhost";
               $username = "root";
-              $password = "dhruthi";
+              $password = "root123";
               $dbname = "bus";
               $conn = new mysqli($servername, $username, $password,$dbname);
               $query = "SELECT dep_date from routes where bid = '$busID' and fromCity = '$from' and toCity = '$to'";
@@ -84,7 +84,7 @@ padding-bottom:20px;
       <li class="list-group-item list-group-item-info"><strong>Depature Time : </strong><?php ini_set('display_errors', 1);
               $servername = "localhost";
               $username = "root";
-              $password = "dhruthi";
+              $password = "root123";
               $dbname = "bus";
               $conn = new mysqli($servername, $username, $password,$dbname);
               $query = "SELECT dep_time from routes where bid = '$busID' and fromCity = '$from' and toCity = '$to'";
@@ -92,12 +92,12 @@ padding-bottom:20px;
               $row =  mysqli_fetch_array($result);
               echo $row['dep_time'];
         ?>
-          
+
       </li>
       <li class="list-group-item list-group-item-info"><strong>Cost : </strong><?php ini_set('display_errors', 1);
               $servername = "localhost";
               $username = "root";
-              $password = "dhruthi";
+              $password = "root123";
               $dbname = "bus";
               $conn = new mysqli($servername, $username, $password,$dbname);
               $query = "SELECT cost from routes where bid = '$busID' and fromCity = '$from' and toCity = '$to'";
@@ -108,14 +108,14 @@ padding-bottom:20px;
               $_SESSION['costaf'] = $costaf;
               echo $costaf;
         ?>
-          
+
       </li>
     </ul>
       <form method="post">
         <input type="submit" name="goback" class="btn btn-danger " value="Go Back"/>
         <input type="submit" name="confirm" class="btn btn-success btn-lg btnpadd" value="Confirm"/>
       </form>
-      
+
     </div>
   </div>
 </div>

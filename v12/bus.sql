@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.4.1deb2ubuntu2
--- http://www.phpmyadmin.net
+-- version 4.6.6deb4
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Nov 14, 2017 at 03:10 PM
--- Server version: 5.7.20-0ubuntu0.16.04.1
--- PHP Version: 7.0.22-0ubuntu0.16.04.1
+-- Host: localhost:3306
+-- Generation Time: Nov 15, 2017 at 03:18 PM
+-- Server version: 5.7.20-0ubuntu0.17.04.1
+-- PHP Version: 7.0.22-0ubuntu0.17.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -100,17 +100,18 @@ INSERT INTO `routes` (`rid`, `bid`, `fromCity`, `toCity`, `cost`, `dep_date`, `d
 CREATE TABLE `tickets` (
   `Tid` int(11) NOT NULL,
   `BusID` int(11) NOT NULL,
-  `user` varchar(20) NOT NULL,
   `noseats` int(11) NOT NULL,
-  `cost` int(11) NOT NULL
+  `cost` int(11) NOT NULL,
+  `user` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tickets`
 --
 
-INSERT INTO `tickets` (`Tid`, `BusID`, `user`, `noseats`, `cost`) VALUES
-(1, 0, 'BT', 2, 400);
+INSERT INTO `tickets` (`Tid`, `BusID`, `noseats`, `cost`, `user`) VALUES
+(1, 0, 0, 0, 0),
+(2, 2, 4, 2000, 1);
 
 --
 -- Indexes for dumped tables
@@ -133,6 +134,12 @@ ALTER TABLE `registered`
 --
 ALTER TABLE `routes`
   ADD PRIMARY KEY (`bid`);
+
+--
+-- Indexes for table `tickets`
+--
+ALTER TABLE `tickets`
+  ADD PRIMARY KEY (`Tid`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

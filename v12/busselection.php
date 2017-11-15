@@ -13,7 +13,7 @@ if ($_POST["submit"]) {
       ini_set('display_errors', 1);
       $servername = "localhost";
       $username = "root";
-      $password = "dhruthi";
+      $password = "root123";
       $dbname = "bus";
       $conn = new mysqli($servername, $username, $password,$dbname);
       $busID = $_POST['busid'];
@@ -82,7 +82,7 @@ padding-bottom:20px;
 <div class="container morepadd">
 
     <div class="col-md-9 col-md-offset-2 loginForm">
-      <table class="table table-striped">
+      <table class="table table-bordered">
 
           <thead class>
             <tr>
@@ -104,7 +104,7 @@ padding-bottom:20px;
           ini_set('display_errors', 1);
           $servername = "localhost";
           $username = "root";
-          $password = "dhruthi";
+          $password = "root123";
           $dbname = "bus";
           $conn = new mysqli($servername, $username, $password,$dbname);
           $fromCity = $_SESSION['fromCity'];

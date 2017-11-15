@@ -13,7 +13,7 @@ if ($_POST["submit"]) {
       ini_set('display_errors', 1);
       $servername = "localhost";
       $username = "root";
-      $password = "dhruthi";
+      $password = "root123";
       $dbname = "bus";
       $conn = new mysqli($servername, $username, $password,$dbname);
       $ID = $_POST['username'];

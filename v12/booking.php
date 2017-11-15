@@ -23,6 +23,9 @@ include("auth.php");
 <script src="home/js/tms-0.4.x.js"></script>
 <script src="home/js/jquery.jqtransform.js"></script>
 <script src="home/js/FF-cash.js"></script>
+<style>
+
+</style>
 <script>
 $(document)
     .ready(function () {
@@ -57,7 +60,7 @@ $(document)
   <!--==============================header=================================-->
   <header>
     <div>
-      <div class="social-icons"> <span>WELCOME : <?php echo $_SESSION['login_user']; ?>!</span></div>
+      <div class="social-icons"> <span>WELCOME : <?php echo $_SESSION['login_user']; ?> </span></div>
       <div id="slide">
         <div class="slider">
           <ul class="items">
@@ -68,13 +71,13 @@ $(document)
         </div>
         <a href="#" class="prev"></a><a href="#" class="next"></a>
        </div>
-      <nav>
+      <nav class="margin">
         <ul class="menu">
           <li class="current"><a href="booking.php">Home</a></li>
           <li><a href="bookingTicket.php">Book Bus</a></li>
-          <li><a href="hotel_booking.html">Book Hotel</a></li>
           <li><a href="contacts.php">Contact</a></li>
           <li><a href="services.php">Services</a></li>
+          <li><a href="mytickets.php">Tickets</a></li>
           <li><a href="logout.php">Logout</a></li>
         </ul>
       </nav>

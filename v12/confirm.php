@@ -1,9 +1,9 @@
 <?php
-  ini_set('display_errors', 1);
   if ($_POST["confirm"]) {
+    ini_set('display_errors', 1);
     $servername = "localhost";
     $username = "root";
-    $password = "dhruthi";
+    $password = "root123";
     $dbname = "bus";
     $conn = new mysqli($servername, $username, $password,$dbname);
     $query  = 'SELECT max(Tid) FROM `tickets`';
@@ -11,17 +11,20 @@
       $row = mysqli_fetch_array($result);
       $maxID = $row["max(Tid)"];
       $newID = $maxID + 1;
-   
+
    session_start();
    $uID = $_SESSION['uid'];
    $busID=$_SESSION['busID'];
    $seats =$_SESSION['noseats'];
    $cost=$_SESSION['costaf'];
-    
-    $sql = "INSERT INTO tickets (Tid,BusID,user,noseats,cost) VALUES ('$newID','$busID','$uID','$seats','$costaf')";
-    $result = $conn->query($query);
-    $conn->close();
-    header("location: booking.php");
+
+   $sql = "INSERT INTO tickets (Tid,BusID,noseats,cost,user) VALUES ('$newID','$busID','$seats','$cost','$uID')";
+   $result = $conn->query($sql);
+   $conn->close();
+   header("location: booking.php");
+  }
+  else if($_POST["goback"]){
+     header("location: booking.php");
   }
 ?>
 <!doctype html>
@@ -82,6 +85,13 @@ padding-bottom:20px;
   <div class="row">
     <div class="col-md-6 col-md-offset-3 loginForm">
       <h1 class="center"><strong>TICKET HAS BEEN CONFIRMED!</strong></h1>
+      <?php
+        echo $newID." ";
+        echo $cost." ";
+        echo $uID." ";
+        echo $busID." ";
+        echo $seats." ";
+     ?>
       <form method="post">
        <input type="submit" name="goback" class="btn btn-danger " value="Cancel"/>
         <input type="submit" name="confirm" class="btn btn-success btn-lg btnpadd" value="Confirm"/>
