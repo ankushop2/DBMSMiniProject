@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 15, 2017 at 03:18 PM
+-- Generation Time: Nov 15, 2017 at 10:48 PM
 -- Server version: 5.7.20-0ubuntu0.17.04.1
 -- PHP Version: 7.0.22-0ubuntu0.17.04.1
 
@@ -87,7 +87,7 @@ CREATE TABLE `routes` (
 
 INSERT INTO `routes` (`rid`, `bid`, `fromCity`, `toCity`, `cost`, `dep_date`, `dep_time`, `arr_date`, `arr_time`, `availseats`) VALUES
 (1, 1, 'Bangalore', 'Chennai', 500, '2017-11-30', '22:00:00', '2017-12-01', '06:00:00', 40),
-(1, 2, 'Bangalore', 'Chennai', 500, '2017-11-30', '05:30:00', '2017-11-30', '12:00:00', 40),
+(1, 2, 'Bangalore', 'Chennai', 500, '2017-11-30', '05:30:00', '2017-11-30', '12:00:00', 47),
 (2, 3, 'Delhi', 'Kolkata', 400, '2017-10-28', '18:00:00', '2017-10-29', '06:00:00', 60),
 (3, 4, 'Kolkata', 'Delhi', 350, '2017-10-30', '20:00:00', '2017-10-31', '08:00:00', 60);
 
@@ -111,7 +111,7 @@ CREATE TABLE `tickets` (
 
 INSERT INTO `tickets` (`Tid`, `BusID`, `noseats`, `cost`, `user`) VALUES
 (1, 0, 0, 0, 0),
-(2, 2, 4, 2000, 1);
+(2, 2, 3, 1500, 1);
 
 --
 -- Indexes for dumped tables

@@ -52,7 +52,7 @@ padding-bottom:20px;
    padding-top:90px;
 }
 .btnpadd {
-   margin-left:265px;
+   margin-left:150px;
 }
 .center {
    text-align:center;
@@ -113,7 +113,7 @@ padding-bottom:20px;
     </ul>
       <form method="post">
         <input type="submit" name="goback" class="btn btn-danger " value="Go Back"/>
-        <input type="submit" name="confirm" class="btn btn-success btn-lg btnpadd" value="Confirm"/>
+        <input type="submit" name="confirm" class="btn btn-success btn-lg btnpadd" value="Confirm Ticket"/>
       </form>
 
     </div>

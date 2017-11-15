@@ -70,7 +70,7 @@ padding-bottom:20px;
    padding-top:90px;
 }
 .btnpadd {
-   margin-left:420px;
+   margin-left:400px;
 }
 .center {
    text-align:center;
@@ -82,20 +82,19 @@ padding-bottom:20px;
 <div class="container morepadd">
 
     <div class="col-md-9 col-md-offset-2 loginForm">
-      <table class="table table-bordered">
+      <table class="table table-bordered table-hover" >
 
           <thead class>
             <tr>
-              <th>#</th>
-              <th>BusID</th>
-              <th>From</th>
-              <th>To</th>
-              <th>Departure Date</th>
-              <th>Departure time</th>
-              <th>Arrival Date</th>
-              <th>Arrival Time</th>
-              <th>Available Seats</th>
-              <th>Cost</th>
+              <th bgcolor="  #82e0aa  ">BusID</th>
+              <th bgcolor="  #82e0aa  ">From</th>
+              <th bgcolor="  #82e0aa  ">To</th>
+              <th bgcolor="  #82e0aa  ">Departure Date</th>
+              <th bgcolor="  #82e0aa  ">Departure time</th>
+              <th bgcolor="  #82e0aa  ">Arrival Date</th>
+              <th bgcolor="  #82e0aa  ">Arrival Time</th>
+              <th bgcolor="  #82e0aa  ">Available Seats</th>
+              <th bgcolor="  #82e0aa  ">Cost</th>
             </tr>
           </thead>
           <tbody>
@@ -119,16 +118,15 @@ padding-bottom:20px;
           $result = $conn->query($query);
           while($row =  mysqli_fetch_array($result)) {
                   echo '<tr>
-                            <td scope="row">' . $row["rid"]. '</td>
-                            <td>' . $row["bid"] .'</td>
-                            <td> '.$row["fromCity"] .'</td>
-                            <td> '.$row["toCity"] .'</td>
-                            <td> '.$row["dep_date"] .'</td>
-                            <td> '.$row["dep_time"] .'</td>
-                            <td> '.$row["arr_date"] .'</td>
-                            <td> '.$row["arr_time"] .'</td>
-                            <td> '.$row["availseats"] .'</td>
-                            <td> '.$row["cost"] .'</td>
+                            <td bgcolor=" #5dade2 "scope="row">' . $row["bid"] .'</td>
+                            <td bgcolor=" #5dade2 "> '.$row["fromCity"] .'</td>
+                            <td bgcolor=" #5dade2 "> '.$row["toCity"] .'</td>
+                            <td bgcolor=" #5dade2 "> '.$row["dep_date"] .'</td>
+                            <td bgcolor=" #5dade2 "> '.$row["dep_time"] .'</td>
+                            <td bgcolor=" #5dade2 "> '.$row["arr_date"] .'</td>
+                            <td bgcolor=" #5dade2 "> '.$row["arr_time"] .'</td>
+                            <td bgcolor=" #5dade2 "> '.$row["availseats"] .'</td>
+                            <td bgcolor=" #5dade2 "> '.$row["cost"] .'</td>
                           </tr>';
             }
           ?>

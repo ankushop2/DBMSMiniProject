@@ -20,6 +20,16 @@
 
    $sql = "INSERT INTO tickets (Tid,BusID,noseats,cost,user) VALUES ('$newID','$busID','$seats','$cost','$uID')";
    $result = $conn->query($sql);
+
+   $sql = "SELECT max(availseats) FROM `routes` WHERE bid='$busID'";
+   $result = $conn->query($sql);
+   $row = mysqli_fetch_array($result);
+   $currseats = $row["max(availseats)"];
+   $currseats = $currseats - $seats;
+
+   $sql = "UPDATE routes set availseats='$currseats' where bid='$busID' ";
+   $result = $conn->query($sql);
+
    $conn->close();
    header("location: booking.php");
   }
@@ -86,15 +96,11 @@ padding-bottom:20px;
     <div class="col-md-6 col-md-offset-3 loginForm">
       <h1 class="center"><strong>TICKET HAS BEEN CONFIRMED!</strong></h1>
       <?php
-        echo $newID." ";
-        echo $cost." ";
-        echo $uID." ";
-        echo $busID." ";
-        echo $seats." ";
-     ?>
+      echo $currseats;
+      ?>
       <form method="post">
        <input type="submit" name="goback" class="btn btn-danger " value="Cancel"/>
-        <input type="submit" name="confirm" class="btn btn-success btn-lg btnpadd" value="Confirm"/>
+        <input type="submit" name="confirm" class="btn btn-success btn-lg btnpadd" value="Continue"/>
       </form>
     </div>
   </div>
