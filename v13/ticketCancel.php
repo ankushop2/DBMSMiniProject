@@ -7,24 +7,22 @@ $password = "root123";
 $dbname = "bus";
 $conn = new mysqli($servername, $username, $password,$dbname);
 session_start();
-$tID = $_SESSION['tid'];
-//$bID = $_SESSION['bidaf'];
+$tID = $_GET["tid"];
 
 $sql = "SELECT BusID,noseats FROM tickets WHERE Tid='$tID' ";
 $result = $conn->query($sql);
 $row1 =  mysqli_fetch_array($result);
 $BusID=$row1["BusID"];
 $noseats=$row1["noseats"];
-echo $BusId;
-echo $noseats;
 
 $sql = "SELECT max(availseats) FROM routes WHERE bid='$BusID'";
 $result = $conn->query($sql);
 $row = mysqli_fetch_array($result);
 $currseats = $row["max(availseats)"];
 $currseats = $currseats + $noseats;
+$_SESSION['currseats']=$currseats;
 
-$sql = "UPDATE routes set availseats='$currseats' where bid='$busID' ";
+$sql = "UPDATE `routes` SET `availseats`='$currseats' WHERE `routes`.`bid`='$BusID' ";
 $result = $conn->query($sql);
 
 $sql = "DELETE FROM tickets WHERE Tid='$tID'";

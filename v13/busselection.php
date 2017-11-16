@@ -110,12 +110,12 @@ padding-bottom:20px;
           $fromCity = $_SESSION['fromCity'];
           $toCity = $_SESSION['toCity'];
           $travel =$_SESSION['travel'];
-          //$date = DateTime::createFromFormat('d/m/Y', $travel)->format('Y-m-d');
-          //$date = $date->format('Y-m-d');
+          $date = DateTime::createFromFormat('m/d/Y', $travel);
+          $date = $date->format('Y-m-d');
           //echo $fromCity;
           //echo $toCity;
           //echo $date;
-          $query = "SELECT * FROM routes where fromCity = '$fromCity' AND toCity = '$toCity' AND dep_date = '$travel'";
+          $query = "SELECT * FROM routes where fromCity = '$fromCity' AND toCity = '$toCity' AND dep_date = '$date'";
           $result = $conn->query($query);
           while($row =  mysqli_fetch_array($result)) {
                   echo '<tr>

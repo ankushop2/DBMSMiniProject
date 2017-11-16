@@ -10,19 +10,13 @@ $uid = $_SESSION['uid'];
 $query2 = "SELECT tickets.tid,tickets.BusID,tickets.cost,tickets.noseats,routes.toCity,routes.fromCity,routes.dep_date,routes.dep_time,routes.arr_date,routes.arr_time FROM routes,tickets where tickets.BusID = routes.bid and tickets.user='$uid'ORDER BY tickets.Tid DESC";
 $result = $conn->query($query2);
 $rowaf =  mysqli_fetch_array($result)
-$busaf=$rowaf['BusID'];*/
+$busaf=$rowaf['BusID'];
   session_start();
   $tid=$_POST["tid"];
   $_SESSION['tid']=$tid;
-  $_SESSION['bidaf']=$busaf;
-if ($_POST["view"]) {
-  header("location: confirm.php");
-}
-else if ($_POST["cancel"]) {
-  //$tid=$_POST["tid"];
-  //$_SESSION['tid']=$tid;
- header("location: ticketCancel.php");
-}
+  if ($_POST["cancel"]) {
+    header("location: ticketCancel.php");
+  }*/
 
 ?>
 <!doctype html>
@@ -130,13 +124,13 @@ padding-bottom:20px;
         </tbody>
         </div>
       </table>
-      <form method="post">
+      <form action="ticketCancel.php" method="get">
         <div class="form-group">
           <label for="tid">Enter Ticket ID:</label>
           <input type="text" name="tid" class="form-control"/>
         </div>
-        <input type="submit" name="view" class="btn btn-success btn-lg btnpadd" value="View Ticket"/>
         <input type="submit" name="cancel" class="btn btn-success btn-lg" value="Cancel"/>
+        <button type="submit" name="view" class="btn btn-success btn-lg" formaction="viewTicket.php">View Ticket</button>
       </form>
     </div>
     <!-- Latest compiled and minified JavaScript -->
