@@ -28,3 +28,5 @@ v11 - [REDACTED]
 v12 - [REDACTED]
 
 v13 - ticket cancellation now works . Viewing Tickets to be done (viewTicket.php)
+
+v14 - ticket viewing now works . 
