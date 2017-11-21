@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.6deb4
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Nov 16, 2017 at 11:56 PM
--- Server version: 5.7.20-0ubuntu0.17.04.1
--- PHP Version: 7.0.22-0ubuntu0.17.04.1
+-- Host: localhost
+-- Generation Time: Nov 21, 2017 at 06:24 PM
+-- Server version: 10.1.28-MariaDB
+-- PHP Version: 7.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -38,6 +40,25 @@ CREATE TABLE `login` (
 
 INSERT INTO `login` (`uID`, `username`, `password`) VALUES
 (1, 'abz', 'root123');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payment`
+--
+
+CREATE TABLE `payment` (
+  `uid` int(11) NOT NULL,
+  `balance` int(11) NOT NULL,
+  `pcode` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `payment`
+--
+
+INSERT INTO `payment` (`uid`, `balance`, `pcode`) VALUES
+(1, 6000, 2110);
 
 -- --------------------------------------------------------
 
@@ -123,6 +144,12 @@ ALTER TABLE `login`
   ADD PRIMARY KEY (`uID`);
 
 --
+-- Indexes for table `payment`
+--
+ALTER TABLE `payment`
+  ADD PRIMARY KEY (`uid`);
+
+--
 -- Indexes for table `registered`
 --
 ALTER TABLE `registered`
@@ -139,6 +166,7 @@ ALTER TABLE `routes`
 --
 ALTER TABLE `tickets`
   ADD PRIMARY KEY (`Tid`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
