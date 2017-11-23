@@ -39,8 +39,7 @@
       $credit = $_POST['cc'];
       $pnumber = $_POST['pcode'];
       $dob=$_POST['bday'];
-      $date = DateTime::createFromFormat('d/m/Y', $dob);
-      $date = $date->format('Y-m-d');
+      $date = $dob;
       /*
       echo $ID." ";
       echo $Pass." ";
