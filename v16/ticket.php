@@ -1,6 +1,25 @@
 <?php
+  session_start();
   if ($_POST["confirm"]) {
-    header("location: payment.php");
+    
+    $servername = "localhost";
+    $username = "root";
+    $password = "root123";
+    $dbname = "bus";
+    $conn = new mysqli($servername, $username, $password,$dbname);
+    $uID = $_SESSION['uid'];
+    $costaf = $_SESSION['costaf']; 
+  	$query = "SELECT balance FROM wallet where uid = '$uID' ";
+    $result = $conn->query($query);
+    $row = mysqli_fetch_array($result);
+    $currbalance = $row["balance"];
+    $flag=0;
+    if($currbalance < $costaf) {
+        $flag=1;
+        header("location: noFunds.php");
+    }
+    if($flag==0) {
+    header("location: payment.php"); }
   }
   else if ($_POST["goback"]) {
    header("location: booking.php");
@@ -67,7 +86,7 @@ padding-bottom:20px;
     <h1 class="center"><strong>Confirm your Details</strong></h1>
       <br>
       <ul class="list-group">
-      <li class="list-group-item list-group-item-info"><strong>Name : </strong><?php ini_set('display_errors', 1); session_start(); $name = $_SESSION['login_user'];  echo $name; ?></li>
+      <li class="list-group-item list-group-item-info"><strong>Name : </strong><?php ini_set('display_errors', 1);  $name = $_SESSION['login_user'];  echo $name; ?></li>
       <li class="list-group-item list-group-item-info"><strong>Bus ID : </strong><?php ini_set('display_errors', 1);  $busID = $_SESSION['busID'];  echo $busID; ?></li>
       <li class="list-group-item list-group-item-info"><strong>From : </strong><?php ini_set('display_errors', 1);  $from = $_SESSION['fromCity'];  echo $from; ?></li>
       <li class="list-group-item list-group-item-info"><strong>To : </strong><?php ini_set('display_errors', 1);  $to = $_SESSION['toCity'];  echo $to; ?></p>
@@ -110,14 +129,13 @@ padding-bottom:20px;
               $_SESSION['costaf'] = $costaf;
               echo $costaf;
         ?>
-
       </li>
     </ul>
       <form method="post">
         <input type="submit" name="goback" class="btn btn-danger " value="Go Back"/>
         <input type="submit" name="confirm" class="btn btn-success btn-lg btnpadd" value="Confirm Ticket"/>
       </form>
-
+    
     </div>
   </div>
 </div>
