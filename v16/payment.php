@@ -10,28 +10,39 @@ if ($_POST["submit"]) {
       ini_set('display_errors', 1);
       $servername = "localhost";
       $username = "root";
-      $password = "root123";
+      $passwd = "root123";
       $dbname = "bus";
-      $conn = new mysqli($servername, $username, $password,$dbname);
+      $conn = new mysqli($servername, $username, $passwd,$dbname);
       session_start();
-      $ID = $_SESSION['uid'];
-       $Pass = $_POST['pin'];
-       //echo $Pass;
-      if(!empty($_POST['pin'])){
-               $query = "SELECT * FROM payment where uid = '$ID' AND pcode = '$Pass'";
-               $result = $conn->query($query);
-               $row = mysqli_fetch_array($result);
-               $rows = mysqli_num_rows($result);
-               if ($rows == 1) {
-                  $result='<div class="alert alert-success"><strong>Login Successful!</strong> </div>';
-                  header("location: confirm.php"); // Redirecting To Other Page
-                  sleep(1.5);
-               }
-               else {
-                    $result='<div class="alert alert-danger"><strong>Pin is invalid</strong></div>';
-               }
+      $uID = $_SESSION['uid'];
+      $Pass = $_POST['pin'];
+      $query1= "SELECT pcode FROM payment where uid = '$uID' ";
+      $result = $conn->query($query1);
+      $flag=0;
+      while($row = mysqli_fetch_array($result)) {
+        $x=$row["pcode"];
+        if($x == $Pass ) {
+            $flag=1;
+            break;
+        }
+      }
+      if($flag==1) {
+          $cost = $_SESSION['costaf'];
+	  $query1= "SELECT balance FROM wallet where uid = '$uID' ";
+          $result = $conn->query($query1);
+          $row = mysqli_fetch_array($result);
+          $currbalance = $row["balance"];
+          $currbalance  = $currbalance - $cost;
+          $sql = "UPDATE `wallet` SET `balance` = '$currbalance' WHERE `wallet`.`uid` = '$uID'";
+          $result = $conn->query($sql);
+          sleep(1);
+          header("location: confirm.php"); // Redirecting To Other Page              
+      }
+      if($flag==0) {
+           $result='<div class="alert alert-danger"><strong>Pin is invalid</strong></div>'; 
       }
     }
+   
 }
 ?>
 <!doctype html>
@@ -79,7 +90,7 @@ padding-bottom:20px;
    padding-top:90px;
 }
 .btnpadd {
-   margin-left:265px;
+   margin-left:245px;
 }
 .center {
    text-align:center;
@@ -91,14 +102,14 @@ padding-bottom:20px;
 <div class="container morepadd">
   <div class="row">
     <div class="col-md-6 col-md-offset-3 loginForm">
-      <h1 class="center"><strong>Log in to BOOK MY BUS</strong></h1>
+      <h1 class="center"><strong>MAKE PAYMENT</strong></h1>
       <?php echo $result; ?>
       <form method="post">
          <div class="form-group input-field" >
-          <label for="password">Enter your Payment Pin:</label>
+          <label for="password">Enter your Pin (Any Card):</label>
           <input  class="form-control" type="password" name="pin" value="<?php echo $_POST['pin']; ?>">
         </div>
-        <input type="submit" name="submit" class="btn btn-success btn-lg btnpadd" value="Login"/>
+        <input type="submit" name="submit" class="btn btn-success btn-lg btnpadd" value="Submit PIN"/>
       </form>
     </div>
   </div>

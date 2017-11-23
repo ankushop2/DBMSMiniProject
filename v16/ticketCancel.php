@@ -26,14 +26,19 @@ $_SESSION['currseats']=$currseats;
 $sql = "UPDATE `routes` SET `availseats`='$currseats' WHERE `routes`.`bid`='$BusID' ";
 $result = $conn->query($sql);
 
-$query = "SELECT max(balance) FROM payment where uid = '$uID' ";
-   $result = $conn->query($query);
-    $row = mysqli_fetch_array($result);
-   $currbalance = $row["max(balance)"];
-   $currbalance  = $currbalance + $costaf;
 
-   $sql = "UPDATE `payment` SET `balance` = '$currbalance' WHERE `payment`.`uid` = '$uID'";
-  $result = $conn->query($sql);
+$cost = $costaf;
+$query1= "SELECT balance FROM wallet where uid = '$uID' ";
+$result = $conn->query($query1);
+$row = mysqli_fetch_array($result);
+$currbalance = $row["balance"];
+$currbalance  = $currbalance + $cost;
+$sql = "UPDATE `wallet` SET `balance` = '$currbalance' WHERE `wallet`.`uid` = '$uID'";
+$result = $conn->query($sql);
+
+
+$sql = "UPDATE `payment` SET `balance` = '$currbalance' WHERE `payment`.`uid` = '$uID'";
+$result = $conn->query($sql);
 
 $sql = "DELETE FROM tickets WHERE Tid='$tID'";
 $result = $conn->query($sql);

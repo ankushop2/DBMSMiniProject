@@ -43,9 +43,8 @@ if ($_POST["submit"]) {
           header("location: booking.php");
       }
       if($flag==0) {
-          header("location: services.php");
+          $final='<div class="alert alert-danger"><strong>Pin is invalid</strong></div>'; 
       }
-      echo "DGSDGG";
     }
 }
 else if($_POST["goback"]) {

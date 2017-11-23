@@ -93,7 +93,7 @@ padding-bottom:20px;
               <th bgcolor="  #82e0aa  ">Arrival Date</th>
               <th bgcolor="  #82e0aa  ">Arrival Time</th>
               <th bgcolor="  #82e0aa  ">Seats</th>
-              <th bgcolor="  #82e0aa  ">Cost</th>
+              <th bgcolor="  #82e0aa  ">Cost	</th>
             </tr>
           </thead>
           <tbody>
@@ -109,6 +109,11 @@ padding-bottom:20px;
           //$query = "SELECT * FROM tickets where user = '$uid';
           $query2 = "SELECT tickets.tid,tickets.BusID,tickets.cost,tickets.noseats,routes.toCity,routes.fromCity,routes.dep_date,routes.dep_time,routes.arr_date,routes.arr_time FROM routes,tickets where tickets.BusID = routes.bid and tickets.user='$uid'ORDER BY tickets.Tid DESC";
           $result = $conn->query($query2);
+          $rows = mysqli_num_rows($result);
+          if($rows == 0 ) {
+                goto B;
+          }
+          
           while($row =  mysqli_fetch_array($result)) {
                   echo '<tr>
                             <td bgcolor=" #5dade2 "scope="row">' . $row["tid"] .'</td>
@@ -123,6 +128,9 @@ padding-bottom:20px;
                             <td bgcolor=" #5dade2 "> '.$row["cost"] .'</td>
                           </tr>';
             }
+            B:
+            $final='<div class="alert alert-danger"><strong>You havent booked any tickets yet !</strong></div>'; 
+            echo $final;
           ?>
         </tbody>
         </div>
