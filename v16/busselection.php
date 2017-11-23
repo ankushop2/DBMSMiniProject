@@ -1,5 +1,7 @@
 <?php
+session_start();
 if ($_POST["submit"]) {
+  $final = "";
   if (!$_POST['busid']) {
     $error.="<br />Please enter your Bus ID";
   }
@@ -18,11 +20,25 @@ if ($_POST["submit"]) {
       $conn = new mysqli($servername, $username, $password,$dbname);
       $busID = $_POST['busid'];
       $noSeats = $_POST['noseats'];
-      session_start();
       $_SESSION['busID'] = $busID;
       $_SESSION['noseats'] = $noSeats;
+      $query = "SELECT availseats FROM routes where bid = '$busID'";
+      $result = $conn->query($query);
+      $row = mysqli_fetch_array($result);
+      $seat = $row["availseats"];
+      $flag=0;
+      if($noSeats > $seat) {
+      		$flag=1;
+      }
+      if($flag==0)
       header("location: ticket.php");
+      
+      
+      $result='<div class="alert alert-danger"><strong>Error : Exceeded total number seats !</strong></div>';
     }
+}
+else if($_POST["goback"]) {
+  header("location: bookingTicket.php");
 }
 ?>
 <!doctype html>
@@ -70,7 +86,7 @@ padding-bottom:20px;
    padding-top:90px;
 }
 .btnpadd {
-   margin-left:400px;
+   margin-left:300px;
 }
 .center {
    text-align:center;
@@ -82,7 +98,7 @@ padding-bottom:20px;
 <div class="container morepadd">
 
     <div class="col-md-9 col-md-offset-2 loginForm">
-      <br><br>
+      <br> <?php echo $result ?><br>
       <table class="table table-bordered table-hover" >
 
           <thead class>
@@ -100,7 +116,6 @@ padding-bottom:20px;
           </thead>
           <tbody>
           <?php
-          session_start();
           ini_set('display_errors', 1);
           $servername = "localhost";
           $username = "root";
@@ -144,6 +159,7 @@ padding-bottom:20px;
           <label for="noseats">Enter Number of Seats:</label>
           <input  class="form-control" type="text" name="noseats">
         </div>
+        <input type="submit" name="goback" class="btn btn-danger " value="Go Back"/>
         <input type="submit" name="submit" class="btn btn-success btn-lg btnpadd" value="Submit"/>
       </form>
     </div>

@@ -27,6 +27,9 @@ if ($_POST["submit"]) {
       }
     }
 }
+else if($_POST["goback"]) {
+  header("location: booking.php");
+}
 ?>
 <!doctype html>
 <html>
@@ -73,7 +76,7 @@ padding-bottom:20px;
    padding-top:90px;
 }
 .btnpadd {
-   margin-left:400px;
+   margin-left:300px;
 }
 .center {
    text-align:center;
@@ -123,6 +126,7 @@ padding-bottom:20px;
           <label for="pcode">Enter Pin Number :</label>
           <input class="form-control" type="password" name="pcode">
         </div>
+         <input type="submit" name="goback" class="btn btn-danger " value="Go Back"/>
         <input type="submit" name="submit" class="btn btn-success btn-lg btnpadd" value="Add Card"/>
       </form>
     </div>

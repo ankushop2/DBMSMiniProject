@@ -22,7 +22,7 @@
     header("location: payment.php"); }
   }
   else if ($_POST["goback"]) {
-   header("location: booking.php");
+   header("location: busselection.php");
   }
 
 ?>

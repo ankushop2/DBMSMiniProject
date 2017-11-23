@@ -46,7 +46,9 @@ $result = $conn->query($sql);
 $conn->close();
 header("location: booking.php");
 }
-
+else if($_POST["no"]) {
+  header("location: mytickets.php");
+}
 ?>
 <!doctype html>
 <html>
@@ -93,7 +95,7 @@ padding-bottom:20px;
    padding-top:90px;
 }
 .btnpadd {
-   margin-left:260px;
+   margin-left:230px;
 }
 .center {
    text-align:center;
@@ -108,6 +110,7 @@ padding-bottom:20px;
       <h1 class="center"><strong>ARE YOU SURE ?</strong></h1>
       <form method="post">
         <input type="submit" name="confirm" class="btn btn-success btn-lg btnpadd" value="Yes"/>
+        <input type="submit" name="no" class="btn btn-danger btn-lg" value="No"/>
       </form>
     </div>
   </div>
