@@ -1,24 +1,3 @@
-<?php
-/*ini_set('display_errors', 1);
-$servername = "localhost";
-$username = "root";
-$password = "root123";
-$dbname = "bus";
-$conn = new mysqli($servername, $username, $password,$dbname);
-$uid = $_SESSION['uid'];
-//$query = "SELECT * FROM tickets where user = '$uid';
-$query2 = "SELECT tickets.tid,tickets.BusID,tickets.cost,tickets.noseats,routes.toCity,routes.fromCity,routes.dep_date,routes.dep_time,routes.arr_date,routes.arr_time FROM routes,tickets where tickets.BusID = routes.bid and tickets.user='$uid'ORDER BY tickets.Tid DESC";
-$result = $conn->query($query2);
-$rowaf =  mysqli_fetch_array($result)
-$busaf=$rowaf['BusID'];
-  session_start();
-  $tid=$_POST["tid"];
-  $_SESSION['tid']=$tid;
-  if ($_POST["cancel"]) {
-    header("location: ticketCancel.php");
-  }*/
-
-?>
 <!doctype html>
 <html>
 <head>
@@ -110,7 +89,9 @@ padding-bottom:20px;
           $query2 = "SELECT tickets.tid,tickets.BusID,tickets.cost,tickets.noseats,routes.toCity,routes.fromCity,routes.dep_date,routes.dep_time,routes.arr_date,routes.arr_time FROM routes,tickets where tickets.BusID = routes.bid and tickets.user='$uid'ORDER BY tickets.Tid DESC";
           $result = $conn->query($query2);
           $rows = mysqli_num_rows($result);
+          $flag=0;
           if($rows == 0 ) {
+                $flag=1;
                 goto B;
           }
           
@@ -129,8 +110,11 @@ padding-bottom:20px;
                           </tr>';
             }
             B:
-            $final='<div class="alert alert-danger"><strong>You havent booked any tickets yet !</strong></div>'; 
-            echo $final;
+            if($flag==1) {
+		        $final='<div class="alert alert-danger"><strong>You havent booked any tickets yet !</strong></div>'; 
+		        echo $final;
+		        header("location: noTicket.php");
+            }
           ?>
         </tbody>
         </div>
