@@ -81,11 +81,11 @@ padding-bottom:20px;
 		    }
 		  }
 		  if($flag==1) {
-		      $loca = 'viewTicket.php?tid=' . $_GET['tid'] . ' ';
+		      $loca = 'ticketCancel.php?tid=' . $_GET['tid'] . ' ';
 		      header("location: $loca"); // Redirecting To Other Page              
 		  }
       ?>
-      <h1 class="center"><strong>Error : THERE IS NO SUCH TICKET</strong></h1>
+      <h1 class="center"><strong>Error : You Cannot Delete This Ticket</strong></h1>
       <form method="post">
         <input type="submit" name="confirm" class="btn btn-success btn-lg btnpadd" value="Try Diffirent ID"/>
       </form>

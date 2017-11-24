@@ -1,6 +1,6 @@
 <?php
   if ($_POST["confirm"]) {
-   header("location: mytickets.php");
+   header("location: bookingTicket.php");
   }
 ?>
 <!doctype html>
@@ -68,26 +68,21 @@ padding-bottom:20px;
 		  $dbname = "bus";
 		  $conn = new mysqli($servername, $username, $passwd,$dbname);
 		  session_start();
+		  $from = $_SESSION['fromCity'];
+          $to = $_SESSION['toCity'];
+          $travel = $_SESSION['travel'];
 		  $uID = $_SESSION['uid'];
-		  $tID = $_GET["tid"];
-		  $query1= "SELECT Tid FROM tickets where user = '$uID' ";
-		  $result = $conn->query($query1);
-		  $flag=0;
-		  while($row = mysqli_fetch_array($result)) {
-		    $x=$row["Tid"];
-		    if($x == $tID ) {
-		        $flag=1;
-		        break;
-		    }
-		  }
-		  if($flag==1) {
-		      $loca = 'viewTicket.php?tid=' . $_GET['tid'] . ' ';
-		      header("location: $loca"); // Redirecting To Other Page              
-		  }
+		  $query = "SELECT * FROM routes where fromCity = '$from' AND toCity = '$to' AND dep_date = '$travel'";
+          $result = $conn->query($query);
+          $row = mysqli_fetch_array($result);
+          $rows = mysqli_num_rows($result);
+          if($rows > 0) {
+          	   header("location: busselection.php"); 
+          }
       ?>
-      <h1 class="center"><strong>Error : THERE IS NO SUCH TICKET</strong></h1>
+      <h1 class="center"><strong>UNABLE TO FIND ANY BUSES</strong></h1>
       <form method="post">
-        <input type="submit" name="confirm" class="btn btn-success btn-lg btnpadd" value="Try Diffirent ID"/>
+        <input type="submit" name="confirm" class="btn btn-success btn-lg btnpadd" value="Try Diffirent Date"/>
       </form>
     </div>
   </div>
