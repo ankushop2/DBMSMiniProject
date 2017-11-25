@@ -97,7 +97,7 @@ $(document)
 </div>
 <!--==============================footer=================================-->
 <footer>
-  <p>© 2017 Arbaaz and Ankush</p>
+  <p>© 2017 Ankush and Arbaaz</p>
 </footer>
 <script>Cufon.now();</script>
 </body>
