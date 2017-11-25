@@ -54,7 +54,7 @@
       $maxID = $row["max(u_id)"];
       $newID = $maxID + 1;
 
-      $sql = "INSERT INTO registered (username, phNo, address,dob,password,u_id) VALUES ('$ID','$phone','$address','$date','$pass','$newID')";
+      $sql = "INSERT INTO registered (username, phNo, address,dob,u_id) VALUES ('$ID','$phone','$address','$date','$newID')";
       $sql2 = "INSERT INTO login (uID,username,password) VALUES ('$newID','$ID','$pass')";
       $sql3 = "INSERT INTO payment (uid,pcode,cc) VALUES ('$newID','$pnumber','$credit')";
       $sql4 = "INSERT INTO wallet (uid,balance) VALUES ('$newID',0)";

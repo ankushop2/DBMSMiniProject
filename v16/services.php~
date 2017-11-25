@@ -38,7 +38,7 @@ if ($_POST["submit"]) {
           $row = mysqli_fetch_array($result);
           $currbalance = $row["balance"];
           $currbalance  = $currbalance + $ID;
-          $result = $conn->query("call getBalance1($uID,$currbalance)");
+          $result = $conn->query("call updateBalance($uID,$currbalance)");
           header("location: booking.php");
       }
       if($flag==0) {

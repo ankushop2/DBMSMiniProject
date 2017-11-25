@@ -22,10 +22,19 @@
     }
     if(!$error){
       session_start();
-      $_SESSION['fromCity'] = $fromCity;
-      $_SESSION['toCity'] = $toCity;
-      $_SESSION['travel'] = $travel;
-      header("location: nobus.php");
+      $travel=$_POST['travelday'];
+      $todayDate = date("Y-m-d");
+      $flag=0;
+      if($todayDate > $travel) {
+      	  $flag=1;
+      }
+      if($flag==0) {
+		  $_SESSION['fromCity'] = $fromCity;
+		  $_SESSION['toCity'] = $toCity;
+		  $_SESSION['travel'] = $travel;
+		  header("location: nobus.php");
+      }
+      $result='<div class="alert alert-danger"><strong>You cannot Book tickets before today !</strong>'.$error.'</div>';
     }
     else {
         //header("location: register.php");

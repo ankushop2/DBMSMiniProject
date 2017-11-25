@@ -61,7 +61,7 @@
       if (($conn->query($sql))&&($conn->query($sql2))&&($conn->query($sql3))&&($conn->query($sql4)) === TRUE) {
           $result='<div class="alert alert-success"><strong>Registration Successful !</strong> </div>';
           sleep(1.5);
-          header("location: login.php");
+          header("location: success.php");
       } else {
           $result='<div class="alert alert-danger"><strong>There were an error in creation, Please try again :</strong>'. $conn->error.'</div>';
       }
