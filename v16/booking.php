@@ -60,13 +60,12 @@ $(document)
   <!--==============================header=================================-->
   <header>
     <div>
-      <div class="social-icons"> <span>WELCOME : <?php echo $_SESSION['login_user']; ?> </span></div>
+      <div class="social-icons"> <span>WELCOME : <a href="viewProfile.php"><?php echo $_SESSION['login_user']; ?></a> </span></div>
       <div id="slide">
         <div class="slider">
           <ul class="items">
             <li><img src="home/images/slider3.jpeg" ></li>
             <li><img src="home/images/slider2.jpg" ></li>
-            <li><img src="home/images/slider1.jpg"></li>
           </ul>
         </div>
         <a href="#" class="prev"></a><a href="#" class="next"></a>
