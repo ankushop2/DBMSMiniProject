@@ -22,7 +22,7 @@
       $error.="<br />Please enter a Password";
     }
     if ($error) {
-      $result='<div class="alert alert-danger"><strong>There were error(s)in your form:</strong>'.$error.'</div>';
+      $result='<div class="alert alert-danger"><strong>There were errors in youre form</strong>'.$error.'</div>';
     }
     else {
       ini_set('display_errors', 1);
@@ -63,7 +63,7 @@
           sleep(1.5);
           header("location: success.php");
       } else {
-          $result='<div class="alert alert-danger"><strong>There were an error in creation, Please try again :</strong>'. $conn->error.'</div>';
+          $result='<div class="alert alert-danger"><strong>You must be atleast 18 years !</strong></div>';
       }
       $conn->close();
     }
