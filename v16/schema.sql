@@ -28,14 +28,14 @@ CREATE TABLE tickets (
   `cost` int(11) NOT NULL,
   `user` int(11) DEFAULT NULL ,
   PRIMARY KEY (Tid),
-  FOREIGN KEY (BusID) REFERENCES routes(bid) 
+  FOREIGN KEY (BusID) REFERENCES routes(bid) ON DELETE CASCADE
 );
 
 CREATE TABLE wallet (
   uid int(10) NOT NULL DEFAULT '1',
   balance int(12) NOT NULL DEFAULT '0',
   PRIMARY KEY (uid),
-  FOREIGN KEY (uid) REFERENCES registered(u_id)
+  FOREIGN KEY (uid) REFERENCES registered(u_id) ON DELETE CASCADE
 );
 
 CREATE TABLE payment (
@@ -43,7 +43,7 @@ CREATE TABLE payment (
   pcode int(11) NOT NULL,
   cc int(20) NOT NULL ,
   PRIMARY KEY (uid,cc),
-  FOREIGN KEY (uid) REFERENCES registered (u_id)
+  FOREIGN KEY (uid) REFERENCES registered (u_id) ON DELETE CASCADE
 );
 
 CREATE TABLE login (
@@ -51,13 +51,13 @@ CREATE TABLE login (
   username varchar(16)  NOT NULL,
   password varchar(25)  NOT NULL,
   PRIMARY KEY (uID),
-  foreign key (uID) references registered(u_id)
+  foreign key (uID) references registered(u_id) ON DELETE CASCADE
 );
 
 INSERT INTO `registered` (`u_id`, `username`, `phNo`, `address`, `dob`) VALUES
 (1, 'abz', '7019970219', 'Marathahalli, Bangalore-560980', '1997-03-15'),
-(2, 'Arbaaz', '9980572645', 'E33/9 , CV RAMAN NAGAR', '2017-02-11'),
-(3, 'Ankush', '7259240173', 'JP Nagar', '2018-01-11');
+(2, 'Arbaaz', '9980572645', 'E33/9 , CV RAMAN NAGAR', '1997-02-11'),
+(3, 'Ankush', '7259240173', 'JP Nagar', '1998-01-11');
 
 INSERT INTO `routes` (`rid`, `bid`, `fromCity`, `toCity`, `cost`, `dep_date`, `dep_time`, `arr_date`, `arr_time`, `availseats`) VALUES
 (1, 1, 'Bangalore', 'Chennai', 500, '2017-11-30', '22:00:00', '2017-12-01', '06:00:00', 37),

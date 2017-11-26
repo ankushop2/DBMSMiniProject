@@ -81,7 +81,7 @@ padding-bottom:20px;
 		    }
 		  }
 		  if($flag==1) {
-		      $loca = 'viewTicket.php?tid=' . $_GET['tid'] . ' ';
+		      $loca = 'ticketPrint.php?tid=' . $_GET['tid'] . ' ';
 		      header("location: $loca"); // Redirecting To Other Page              
 		  }
       ?>
